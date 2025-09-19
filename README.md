@@ -1,133 +1,109 @@
 # APR_Assignment1
 
-Titanic Survival Prediction using Logistic Regression
-!
+## Titanic Survival Prediction using Logistic Regression
 
+![Titanic Survival Prediction](https://placehold.co/800x300/000000/FFFFFF?text=Titanic+Survival+Prediction)
 
-Licensed by Google
+This project builds a logistic regression model to predict passenger survival on the RMS Titanic. The analysis is based on the Kaggle dataset, "**Titanic: Machine Learning from Disaster**."
 
-(https://www.google.com/search?q=https://placehold.co/800x300/000000/FFFFFF%3Ftext%3DTitanic%2BSurvival%2BPrediction)
+---
 
-This project builds a logistic regression model to predict passenger survival on the RMS Titanic. The analysis is based on the classic Kaggle dataset, "Titanic: Machine Learning from Disaster."
+## 📋 Table of Contents
 
-📋 Table of Contents
-Introduction
+- [Introduction](#introduction)
+- [Methodology](#methodology)
+- [Results](#results)
+- [Potential Improvements](#potential-improvements)
+- [How to Run](#how-to-run)
+- [Dependencies](#dependencies)
 
-Methodology
+---
 
-Results
+## 📖 Introduction
 
-Potential Improvements
+The goal of this project is to apply fundamental machine learning concepts to a real-world dataset. We use passenger data—such as age, gender, and socio-economic class—to train a model that can classify whether a passenger survived the disaster.
 
-How to Run
+---
 
-Dependencies
+## 🛠️ Methodology
 
-📖 Introduction
-The goal of this project is to apply fundamental machine learning concepts to a real-world dataset. We use passenger data—such as age, gender, and socio-economic class—to train a model that can classify whether a passenger survived the shipwreck. Logistic regression was chosen for its simplicity and effectiveness as a baseline model for binary classification.
-
-🛠️ Methodology
 The project follows a standard machine learning workflow:
 
-Data Exploration & Visualization:
+1. **Data Exploration & Visualization**
+    - Loaded the dataset and inspected its features (`Pclass`, `Sex`, `Age`, `Fare`, etc.).
+    - Identified and quantified missing values in the `Age`, `Cabin`, and `Embarked` columns.
+    - Visualized key relationships, confirming that gender and passenger class were strong indicators of survival.
 
-Loaded the dataset and inspected its features (Pclass, Sex, Age, Fare, etc.).
+2. **Data Preprocessing**
+    - **Imputed Missing Values:** Filled missing `Age` data with the median age corresponding to the passenger's class (`Pclass`).
+    - **Dropped Unnecessary Columns:** Removed `Cabin` (too many missing values), `Ticket`, and `Name` as they do not provide predictive value.
+    - **Encoded Categorical Features:** Converted `Sex` and `Embarked` columns into numerical format using one-hot encoding.
 
-Identified and quantified missing values in the Age, Cabin, and Embarked columns.
+3. **Model Training**
+    - The data was split into an 80% training set and a 20% testing set.
+    - A `LogisticRegression` model from scikit-learn was instantiated and trained on the preprocessed training data.
 
-Visualized key relationships, confirming that gender and passenger class were strong indicators of survival.
+---
 
-Data Preprocessing:
+## 📊 Results
 
-Imputed Missing Values: Filled missing Age data with the median age corresponding to the passenger's class (Pclass).
-
-Dropped Unnecessary Columns: Removed Cabin (too many missing values), Ticket, and Name as they do not provide predictive value.
-
-Encoded Categorical Features: Converted Sex and Embarked columns into numerical format using one-hot encoding.
-
-Model Training:
-
-The data was split into an 80% training set and a 20% testing set.
-
-A LogisticRegression model from scikit-learn was instantiated and trained on the preprocessed training data.
-
-📊 Results
 The model's performance was evaluated on the unseen test set, yielding the following results:
 
-Overall Accuracy: 82%
+- **Overall Accuracy:** `82%`
 
-Classification Report
-Class
+### Classification Report
 
-Precision
+| Class                 | Precision | Recall | F1-Score | Support |
+|-----------------------|-----------|--------|----------|---------|
+| 0 (Did not Survive)   | 0.83      | 0.87   | 0.85     | 105     |
+| 1 (Survived)          | 0.80      | 0.74   | 0.77     | 74      |
 
-Recall
+### Confusion Matrix
 
-F1-Score
-
-Support
-
-0 (Did not Survive)
-
-0.83
-
-0.87
-
-0.85
-
-105
-
-1 (Survived)
-
-0.80
-
-0.74
-
-0.77
-
-74
-
-Confusion Matrix
 The model correctly identified 91 non-survivors and 55 survivors in the test set.
 
+```
               Predicted
-             | 0  | 1  |
--------------------------
-Actual   | 0 | 91 | 14 |
-         | 1 | 19 | 55 |
--------------------------
+             |  0  |  1  |
+---------------------------
+Actual   0   |  91 |  14 |
+         1   |  19 |  55 |
+---------------------------
+```
 
-🚀 Potential Improvements
+---
+
+## 🚀 Potential Improvements
+
 The current model serves as a strong baseline. Future work could include:
 
-Feature Engineering: Creating new features like FamilySize (from SibSp + Parch) or IsAlone.
+- **Feature Engineering:** Creating new features like `FamilySize` (from `SibSp` + `Parch`) or `IsAlone`.
+- **Advanced Imputation:** Using more sophisticated techniques (e.g., KNN imputer) for missing `Age` values.
+- **Alternative Models:** Experimenting with more complex algorithms like Random Forest, Gradient Boosting, or Support Vector Machines to potentially improve accuracy.
 
-Advanced Imputation: Using more sophisticated techniques (e.g., KNN imputer) for missing Age values.
+---
 
-Alternative Models: Experimenting with more complex algorithms like Random Forest, Gradient Boosting, or Support Vector Machines to potentially improve accuracy.
+## ▶️ How to Run
 
-▶️ How to Run
 Clone the repository:
 
-git clone <repository-url>
+```bash
+git clone https://github.com/tanishkagupta2207/APR_Assignment1.git
+```
 
-Install dependencies:
+```bash
+Execute the cells
+```
+---
 
-pip install -r requirements.txt
+## 📦 Dependencies
 
-(Note: You may need to create a requirements.txt file or install the libraries listed below manually.)
+- pandas
+- numpy
+- matplotlib
+- seaborn
+- scikit-learn
 
-Execute the script:
+---
 
-python titanic_survival.py
-
-📦 Dependencies
-pandas
-
-numpy
-
-matplotlib
-
-seaborn
-
-scikit-learn
+**Licensed by Google**
